@@ -23,6 +23,9 @@ namespace Briefbox.Microservice.Api
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
             var app = builder.Build();
+
+            // use base path
+            app.UsePathBase("/business");
             app.UseForwardedHeaders();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
