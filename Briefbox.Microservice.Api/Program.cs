@@ -16,6 +16,8 @@ namespace Briefbox.Microservice.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // add health check
+            builder.Services.AddHealthChecks();
             // add x-forward header 
             builder.Services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -55,6 +57,9 @@ namespace Briefbox.Microservice.Api
             })
             .WithName("GetWeatherForecast")
             .WithOpenApi();
+
+            // add health check
+            app.MapHealthChecks("/health");
 
             app.Run();
         }
