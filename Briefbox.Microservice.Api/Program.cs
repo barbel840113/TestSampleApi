@@ -29,13 +29,8 @@ namespace Briefbox.Microservice.Api
             // use base path
             app.UsePathBase("/business");
             app.UseForwardedHeaders();
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseAuthorization();
 
             var summaries = new[]
